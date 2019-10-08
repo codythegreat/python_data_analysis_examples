@@ -1,4 +1,5 @@
 from openpyxl import load_workbook
+from openpyxl.styles import PatternFill
 
 wb = load_workbook(filename = 'book1.xlsx') # todo : add in worksheet names
 workSheets = []
@@ -27,5 +28,11 @@ for ws in workSheets:
             scoreByGame = []
             for row in range(2, 16):
                 scoreByGame.append(wb.ws.cell(row=row, column=colCounter).value)
+                # test to see if this works: determine win by fill color
+                # if it doesn't try start_color
+                if wb.ws.cell(row=row, column=colCounter).fill.fill_type == none:
+                    scoreByGame.append(0)
+                else:
+                    scoreByGame.append(1)
             colCounter = colCounter + 1
             winsByWeekByPlayer[week].append({player: scoreByGame})
