@@ -1,9 +1,10 @@
+import plotly.express as px
 from openpyxl import load_workbook
 from openpyxl.styles import PatternFill
 import pprint
 import re
 
-wb = load_workbook(filename = 'Football-2019.xlsx') # todo : add in worksheet names
+wb = load_workbook(filename = 'Football-2019.xlsx')
 workSheets = wb.sheetnames[:5]
 teams = []
 # fill teams list with lists of [team1, team2, winner]
@@ -32,12 +33,22 @@ for ws in workSheets:
                 break
             # determine win by fill color
             if wb[ws].cell(row=row, column=colCounter).fill.fill_type == 'solid':
-                scoreByGame.append(1)
-            elif wb[ws].cell(row=row, column=colCounter).fill.fill_type == None:
                 scoreByGame.append(0)
+            elif wb[ws].cell(row=row, column=colCounter).fill.fill_type == None:
+                scoreByGame.append(1)
         colCounter = colCounter + 1
         winsByWeekByPlayer[ws].append({player[:3].upper(): scoreByGame})
 
 pp = pprint.PrettyPrinter(indent=4)
 # pp.pprint(winsByWeekByPlayer[1])
-print(winsByWeekByPlayer['Week 4'][-1])
+# print(winsByWeekByPlayer['Week 4'][-1])
+
+
+#for person in winsByWeekByPlayer['Week 1']:
+#    score = 0
+#    for name, wins in person.items():
+#        for win in wins:
+#            score += win
+#    print(score)
+
+pp.pprint(winsByWeekByPlayer)
