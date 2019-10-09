@@ -20,13 +20,14 @@ players = []
 for col in range(2, 13):
     players.append(wb.active.cell(column=col, row=1).value)
 # create a new dictionary holding each players game scores by week
-winsByWeekByPlayer = dict() 
+winsByWeekByPlayer = []
+# add 5 empty lists to hold each weeks game data 
+for week in range(0, 5):
+    winsByWeekByPlayer.append([])
 for ws in workSheets:
     colCounter = 2
-    # create a new key to week with an empty string value
-    winsByWeekByPlayer[ws] = []
     for player in players:
-            # new list to hold each pick score
+        # new list to hold each pick score
         scoreByGame = []
         for row in range(2, 19):
             # since some weeks are shorter, break when reach score
@@ -38,23 +39,7 @@ for ws in workSheets:
             elif wb[ws].cell(row=row, column=colCounter).fill.fill_type == None:
                 scoreByGame.append(1)
         colCounter = colCounter + 1
-        winsByWeekByPlayer[ws].append({player[:3].upper(): scoreByGame})
+        winsByWeekByPlayer[workSheets.index(ws)].append(scoreByGame)
 
 pp = pprint.PrettyPrinter(indent=4)
-# pp.pprint(winsByWeekByPlayer[1])
-# print(winsByWeekByPlayer['Week 4'][-1])
-
-
-#for person in winsByWeekByPlayer['Week 1']:
-#    score = 0
-#    for name, wins in person.items():
-#        for win in wins:
-#            score += win
-#    print(score)
-
 pp.pprint(winsByWeekByPlayer)
-
-# plt.figure(figsize=(10, 8))
-# x, y = np.unique(winsByWeekByPlayer['Week 1'][-1].get('COD'), return_counts=True)
-# plt.plot(x, y, "b-")
-# plt.show()
