@@ -1,8 +1,9 @@
-import plotly.express as px
+import matplotlib.pyplot as plt
 from openpyxl import load_workbook
 from openpyxl.styles import PatternFill
 import pprint
 import re
+import numpy as np
 
 wb = load_workbook(filename = 'Football-2019.xlsx')
 workSheets = wb.sheetnames[:5]
@@ -52,3 +53,8 @@ pp = pprint.PrettyPrinter(indent=4)
 #    print(score)
 
 pp.pprint(winsByWeekByPlayer)
+
+# plt.figure(figsize=(10, 8))
+# x, y = np.unique(winsByWeekByPlayer['Week 1'][-1].get('COD'), return_counts=True)
+# plt.plot(x, y, "b-")
+# plt.show()
