@@ -43,3 +43,16 @@ for ws in workSheets:
 
 pp = pprint.PrettyPrinter(indent=4)
 pp.pprint(winsByWeekByPlayer)
+for p in range(0, 11):
+    playerValues = []
+    score = 0
+    for week in winsByWeekByPlayer[1:]:
+        for data in week[p]:
+            score += data
+        playerValues.append(score)
+        score = 0
+    print(playerValues)
+    label = "player " + str(p)
+    plt.plot([1,2,3,4], playerValues, label=label)
+plt.legend()
+plt.show()
