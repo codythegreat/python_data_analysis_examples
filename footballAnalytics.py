@@ -15,15 +15,23 @@ for ws in workSheets:
         gameData.append(wb[ws]['M'+str(row)].value)
         teams.append(gameData)
 
+# graph for teams by appearance
+
+# graph for teams that won the most
+
+
 players = []
 # fill players list from spreadsheet
 for col in range(2, 13):
-    players.append(wb.active.cell(column=col, row=1).value)
-# create a new dictionary holding each players game scores by week
+    # Grab the first three letters of the name in upper case
+    players.append(wb.active.cell(column=col, row=1).value[:3].upper())
+
+# create a new list holding weeks > players > scores
 winsByWeekByPlayer = []
 # add 5 empty lists to hold each weeks game data 
 for week in range(0, 5):
     winsByWeekByPlayer.append([])
+
 for ws in workSheets:
     colCounter = 2
     for player in players:
@@ -41,18 +49,18 @@ for ws in workSheets:
         colCounter = colCounter + 1
         winsByWeekByPlayer[workSheets.index(ws)].append(scoreByGame)
 
+# example of printing raw data to system out using pretty printer
 pp = pprint.PrettyPrinter(indent=4)
 pp.pprint(winsByWeekByPlayer)
-for p in range(0, 11):
+
+# use np.sum to sum each player's list of scores to get a total score we can plot
+for p in range(0, len(players)):
     playerValues = []
-    score = 0
-    for week in winsByWeekByPlayer[1:]:
-        for data in week[p]:
-            score += data
-        playerValues.append(score)
-        score = 0
-    print(playerValues)
-    label = "player " + str(p)
-    plt.plot([1,2,3,4], playerValues, label=label)
+    for week in winsByWeekByPlayer:
+        playerValues.append(np.sum(week[p]))
+    label = players[p]
+    plt.plot([1,2,3,4,5], playerValues, label=label)
+
+# create a legend on the plot and show the plot
 plt.legend()
 plt.show()
