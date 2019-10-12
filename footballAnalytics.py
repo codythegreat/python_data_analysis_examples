@@ -16,7 +16,14 @@ for ws in workSheets:
         teams.append(gameData)
 
 # graph for teams by appearance
-
+# find a solution for names mixing together
+allTeams = []
+for t in teams:
+    allTeams.extend(t[:1])
+x, y = np.unique(allTeams, return_counts=True)
+plt.figure()
+plt.plot(x, y)
+plt.show(block=False)
 # graph for teams that won the most
 
 
@@ -54,6 +61,7 @@ pp = pprint.PrettyPrinter(indent=4)
 pp.pprint(winsByWeekByPlayer)
 
 # use np.sum to sum each player's list of scores to get a total score we can plot
+plt.figure()
 for p in range(0, len(players)):
     playerValues = []
     for week in winsByWeekByPlayer:
