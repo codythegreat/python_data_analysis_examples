@@ -16,14 +16,19 @@ for ws in workSheets:
         teams.append(gameData)
 
 # graph for teams by appearance
-# find a solution for names mixing together
 allTeams = []
 for t in teams:
     allTeams.extend(t[:1])
 x, y = np.unique(allTeams, return_counts=True)
-plt.figure()
-plt.plot(x, y)
-plt.show(block=False)
+for i in range(1, int(len(allTeams)/10)):
+    plt.figure()
+    plt.plot(x[(i-1)*10:i*10], y[(i-1)*10:i*10])
+    plt.show(block=False)
+# or simply print to console the team counts
+
+for i in range(len(x)):
+    print(x[i].ljust(20), "-".ljust(5), y[i], " times.")
+
 # graph for teams that won the most
 
 
@@ -55,10 +60,6 @@ for ws in workSheets:
                 scoreByGame.append(1)
         colCounter = colCounter + 1
         winsByWeekByPlayer[workSheets.index(ws)].append(scoreByGame)
-
-# example of printing raw data to system out using pretty printer
-pp = pprint.PrettyPrinter(indent=4)
-pp.pprint(winsByWeekByPlayer)
 
 # use np.sum to sum each player's list of scores to get a total score we can plot
 plt.figure()
