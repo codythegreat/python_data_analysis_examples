@@ -46,7 +46,7 @@ for ws in workSheets:
         scoreByGame = []
         for row in range(2, 19):
             # since some weeks are shorter, break when reach score
-            if re.search(r"^\s*\d+-\d+\s*$", wb[ws].cell(row=row, column=colCounter).value):
+            if re.search(r"\d+-\d+", wb[ws].cell(row=row, column=colCounter).value):
                 break
             # determine win by fill color
             if wb[ws].cell(row=row, column=colCounter).fill.fill_type == 'solid':
