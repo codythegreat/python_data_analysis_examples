@@ -5,10 +5,12 @@ import pprint
 import re
 import numpy as np
 
+# load our excel file into python. create a list of worksheets from the book.
 wb = load_workbook(filename = 'Football-2019.xlsx')
 workSheets = wb.sheetnames[:5]
-teams = []
+
 # fill teams list with lists of [team1, team2, winner]
+teams = []
 for ws in workSheets:
     for row in range(2, 16):
         gameData = wb[ws]['A'+str(row)].value.split(' at ')
@@ -25,15 +27,14 @@ for i in range(1, int(len(allTeams)/10)):
     plt.plot(x[(i-1)*10:i*10], y[(i-1)*10:i*10])
     plt.show(block=False)
 # or simply print to console the team counts
-
 for i in range(len(x)):
-    print(x[i].ljust(20), "-".ljust(5), y[i], " times.")
+    print(x[i].ljust(20), "-".ljust(5), y[i], " times")
 
 # graph for teams that won the most
 
 
-players = []
 # fill players list from spreadsheet
+players = []
 for col in range(2, 13):
     # Grab the first three letters of the name in upper case
     players.append(wb.active.cell(column=col, row=1).value[:3].upper())
