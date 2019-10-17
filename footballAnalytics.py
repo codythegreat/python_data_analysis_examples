@@ -24,6 +24,7 @@ for t in teams:
 x, y = np.unique(allTeams, return_counts=True)
 for i in range(1, int(len(allTeams)/10)):
     plt.figure()
+    # plot 10 at a time for readability
     plt.plot(x[(i-1)*10:i*10], y[(i-1)*10:i*10])
     plt.show(block=False)
 # or simply print to console the team counts
