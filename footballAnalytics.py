@@ -31,7 +31,13 @@ for i in range(len(x)):
     print(x[i].ljust(20), "-".ljust(5), y[i], " times")
 
 # graph for teams that won the most
-
+# This data would require on to fill in row M with winnning team names.
+winningTeams = []
+for t in teams:
+    winningTeams.append(t[len(t)-1])
+x, y = np.unique(winningTeams, return_counts=True)
+for i in range(len(x)):
+    print(x[i].ljust(20), "-".ljust(5), y[i], " wins")
 
 # fill players list from spreadsheet
 players = []
