@@ -12,7 +12,7 @@ We will be using the following packages in this repo:
 Other packages that we'll use:
 - re (regex)
 - pprint (better terminal output formatting)
-- xml/json (data import for these filetypes)
+- xml/json/csv (data import for these filetypes)
 - math
 
 ### How to use this repo
