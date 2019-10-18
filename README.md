@@ -3,19 +3,20 @@
 Python is an east-to-learn language that works great for data analysis. This repo's purpose is to showcase some of the basic abilities Python (and some of its more popular packages) has for cleaning, modeling, and organizing data.
 
 We will be using the following packages in this repo:
-- matplotlib
-- numpy
-- pandas
-- plotly
-- openpyxl
+- Matplotlib (data visualization)
+- Numpy (scientific computing)
+- Pandas ("spreadsheet-like" data analysis)
+- Plotly (data visualization)
+- Openpyxl (work with excel files)
 
 ### How to use this repo
 
 You can use this repo for quick examples. Some examples include:
-- plotting to a graph using plotly/matplotlib
-- working with existing data using numpy/pandas as a tool for analysis
-- cleanly printing data
+- working with existing data using Numpy/Pandas as a tool for analysis
+- storing data in powerful structures such as the Pandas `DataFrame` and Numpy's `ndarray`
+- cleaning data
 - importing data from xml, json, excel, and other file formats
+- plotting to a graph using Plotly/Matplotlib
 
 ### Contributing
 
