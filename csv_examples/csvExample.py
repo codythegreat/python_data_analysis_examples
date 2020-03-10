@@ -5,15 +5,6 @@ import pandas as pd
 csvFile = open("MOCK_DATA.csv")
 readCSV = csv.reader(csvFile, delimiter=",")
 
-print(readCSV) # prints the object type
-
-# print out the data in a readable format:
-#for row in readCSV:
-#    for col in row:
-#        print('|' , '{:^22}'.format(col),end="")
-#    print("|\n")
-
-
 # use a pandas DataFrame to store the data
 # we don't need the id when creating the dataframe
 # so we'll just use 5 lists
@@ -34,8 +25,7 @@ carDataDict = {
 }
 
 carDF = pd.DataFrame(carDataDict)
-print(carDF)
+# print the entire dataframe by horsepower ascending
+print(carDF.sort_values("horsepower").to_string())
 
-# we can also add more columns and use formulas to fill these columns with data
 
-carDF['HP to MPG'] = carDF['horsepower'] / carDF['mpg'] # fix data type error
