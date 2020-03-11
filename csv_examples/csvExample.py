@@ -1,3 +1,7 @@
+# csvExamples.py - opens and reads a csv file's contents
+#                  creates a pandas DataFrame from data
+#                  and prints cars in order of horsepower
+
 import csv
 import numpy as np
 import pandas as pd
@@ -26,6 +30,5 @@ carDataDict = {
 
 carDF = pd.DataFrame(carDataDict)
 # print the entire dataframe by horsepower ascending
-print(carDF.sort_values("horsepower").to_string())
-
-
+# .to_string() is used to print entire table
+print(carDF.sort_values("horsepower").to_string()) 
