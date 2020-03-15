@@ -1,6 +1,7 @@
 # jsonTest.py - pulls data from a json file and plots
 #               male and female acocunt balances using
 #               plotly subplots. 
+#               Uses MOCK_DATA.json
 
 import json
 import numpy as np
