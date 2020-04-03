@@ -31,14 +31,22 @@ for row in ws.iter_rows(min_row=1, max_col=5, max_row=10):
     print('|')
 
 
-# We can also convert out excel sheet to a dataframe
+# We can also convert out excel sheet to a DataFrame
 data = ws.values
 
 # get the first line in the sheet as the header
 columns = next(data)[0:]
 
-# create your dataframe
+# create your DataFrame
 df = pd.DataFrame(data, columns=columns)
 
-# you can print the dataframe to get the entire sheet's values
+# you can print the DataFrame to get the entire sheet's values
 print(df)
+print()
+
+# of course with a DataFrame we have access to all of panda's
+# DataFrame class methods. This allows us to do things like filter
+# here we've filtered down to rows where Jones is selling
+# either Pens or Pen Sets
+print(df.loc[df['Item'].isin(['Pen', 'Pen Set'])]
+    .loc[df['Rep'] == 'Jones'])
