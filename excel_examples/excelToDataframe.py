@@ -1,3 +1,7 @@
+# excelToDataframe.py - reads from an existing excel 
+# workbook and showcases various methods for reading,
+# printing, and filtering it's data.
+
 from openpyxl import load_workbook
 import pandas as pd
 
