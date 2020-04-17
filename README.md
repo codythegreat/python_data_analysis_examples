@@ -1,6 +1,6 @@
 # Python Data Analysis
 
-Python is an east-to-learn language that works great for data analysis. This repo's purpose is to showcase some of the basic abilities Python (and some of its more popular packages) has for cleaning, modeling, and organizing data.
+Python is an easy-to-learn language that works great for data analysis. This repo's purpose is to showcase some of the basic abilities Python (and some of its more popular packages) have for cleaning, modeling, and organizing data.
 
 We will be using the following packages in this repo:
 - matplotlib (data visualization)
